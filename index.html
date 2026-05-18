@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Gedefaye Anteneh | Smart Systems Architecture</title>
+
+    <!-- Bootstrap 5 + Icons + Google Fonts (Modern) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Dark theme (default) */
+            --bg-primary: #0a0f1e;
+            --bg-secondary: #0f172a;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --accent-primary: #2dd4bf;
+            --accent-secondary: #fbbf24;
+            --card-bg: rgba(15, 25, 45, 0.7);
+            --border-glow: rgba(45, 212, 191, 0.3);
+            --glass-border: rgba(45, 212, 191, 0.25);
+            --skill-bg: rgba(45, 212, 191, 0.12);
+            --footer-bg: rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f0f9ff;
+            --bg-secondary: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --accent-primary: #0d9488;
+            --accent-secondary: #d97706;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --border-glow: rgba(13, 148, 136, 0.2);
+            --glass-border: rgba(13, 148, 136, 0.3);
+            --skill-bg: rgba(13, 148, 136, 0.1);
+            --footer-bg: rgba(200, 220, 240, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* Enhanced glass morphism */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .glass-card {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .glass-nav {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 1.75rem;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid var(--glass-border);
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 20px 30px -15px rgba(45, 212, 191, 0.3);
+        }
+
+        [data-theme="light"] .project-card:hover {
+            box-shadow: 0 20px 30px -15px rgba(13, 148, 136, 0.2);
+        }
+
+        .btn-smart {
+            background: linear-gradient(100deg, var(--accent-primary), var(--accent-secondary));
+            border: none;
+            border-radius: 2rem;
+            padding: 0.5rem 1.4rem;
+            font-weight: 600;
+            color: #0f172a;
+            transition: 0.2s;
+        }
+
+        .btn-smart:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.4);
+            color: #0a0f1e;
+        }
+
+        .btn-outline-smart {
+            border: 1px solid var(--accent-primary);
+            background: transparent;
+            border-radius: 2rem;
+            padding: 0.4rem 1.2rem;
+            color: var(--accent-primary);
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .btn-outline-smart:hover {
+            background: var(--accent-primary);
+            color: #0f172a;
+        }
+
+        .section-chip {
+            background: var(--skill-bg);
+            backdrop-filter: blur(4px);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            letter-spacing: 0.3px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+            border: 0.5px solid var(--glass-border);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(130deg, var(--accent-secondary), var(--accent-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .skill-badge {
+            background: var(--skill-bg);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 0.2rem;
+            display: inline-block;
+            border: 0.5px solid var(--glass-border);
+            color: var(--text-primary);
+        }
+
+        .profile-avatar {
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.3rem;
+            font-weight: bold;
+            color: #0f172a;
+            object-fit: cover;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 0 auto;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-avatar:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 0 3px var(--accent-primary);
+        }
+
+        .upload-hint {
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+            color: var(--accent-primary);
+            cursor: pointer;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+
+        .upload-hint:hover {
+            opacity: 1;
+        }
+
+        .filter-btn-active {
+            background: var(--accent-primary) !important;
+            color: #0f172a !important;
+            border-color: var(--accent-primary) !important;
+        }
+
+        .contact-icon {
+            background: var(--skill-bg);
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            transition: 0.2s;
+            font-size: 1.4rem;
+            color: var(--accent-primary);
+            border: 0.5px solid var(--glass-border);
+        }
+
+        .contact-icon:hover {
+            background: var(--accent-primary);
+            color: #0f172a;
+            transform: translateY(-3px);
+        }
+
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 46px;
+            height: 46px;
+            border-radius: 30px;
+            background: var(--accent-primary);
+            border: none;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            cursor: pointer;
+            z-index: 99;
+            color: #0f172a;
+        }
+
+        #scrollTopBtn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        footer {
+            background: var(--footer-bg);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--accent-primary);
+            transition: 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+        }
+
+        .text-muted-custom {
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .glass-card { padding: 1.2rem; }
+            h2 { font-size: 1.6rem; }
+            .profile-avatar { width: 90px; height: 90px; }
+        }
+
+        #profileImageInput {
+            display: none;
+        }
+
+        /* Improved contrast for light mode */
+        [data-theme="light"] .glass-card,
+        [data-theme="light"] .project-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .skill-badge {
+            background: rgba(13, 148, 136, 0.12);
+            color: #1e293b;
+        }
+
+        [data-theme="light"] .section-chip {
+            background: rgba(13, 148, 136, 0.15);
+            color: #0d9488;
+        }
+
+        [data-theme="light"] .contact-icon {
+            background: rgba(13, 148, 136, 0.12);
+            color: #0d9488;
+        }
+
+        [data-theme="light"] .btn-outline-smart {
+            color: #0d9488;
+            border-color: #0d9488;
+        }
+
+        [data-theme="light"] .btn-outline-smart:hover {
+            background: #0d9488;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Glass navigation bar -->
+    <nav class="glass-nav fixed-top py-3">
+        <div class="container d-flex justify-content-between align-items-center flex-wrap">
+            <div class="d-flex align-items-center gap-3">
+                <div class="profile-avatar" style="width: 48px; height: 48px; font-size: 1.4rem;" id="navAvatar">GA</div>
+                <div>
+                    <span class="fw-bold fs-6" style="background: linear-gradient(120deg, var(--accent-primary), var(--accent-secondary)); -webkit-background-clip:text; background-clip:text; color:transparent;">Gedefaye Anteneh</span>
+                    <div class="small" style="color: var(--accent-primary);">Smart Systems Architect</div>
+                </div>
+            </div>
+            <div class="d-flex gap-2 mt-2 mt-sm-0">
+                <button id="themeToggleBtn" class="btn btn-outline-smart btn-sm">🌓 Theme</button>
+                <a href="#" class="btn btn-smart btn-sm">📄 CV Resume</a>
+            </div>
+        </div>
+    </nav>
+    <div style="height: 90px;"></div>
+
+    <main class="container my-4">
+        <!-- Hero Section with modern about + profile upload -->
+        <div class="row g-5 align-items-center mb-5">
+            <div class="col-lg-7">
+                <div class="glass-card p-4 p-md-5">
+                    <div class="section-chip"><i class="bi bi-cpu me-1"></i> AI-Ready | Full‑Stack Innovator</div>
+                    <h1 class="display-5 fw-bold mb-3">Intelligent Systems <br><span style="color: var(--accent-primary);">for Digital Era</span></h1>
+                    <p class="lead" style="color: var(--text-primary);">Computer Science graduate, 2+ years core banking experience, currently <strong>Core & Digital Application Officer</strong> at Ahadu Bank. I architect <strong>smart e‑commerce, license management, service desks, property platforms and faith-based systems</strong> — 12+ production solutions live.</p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <div><i class="bi bi-check-circle-fill text-success"></i> 12+ live platforms</div>
+                        <div><i class="bi bi-shield-lock-fill" style="color: var(--accent-primary);"></i> USSD Application development</div>
+                        <div><i class="bi bi-grid-3x3-gap-fill"></i> Multi‑domain SaaS</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="glass-card p-4 text-center">
+                    <!-- Profile photo upload section -->
+                    <div class="profile-avatar mx-auto mb-2" id="profileAvatar">
+                        <span id="avatarText">👨‍💻</span>
+                        <img id="avatarImage" style="display: none; width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" alt="Profile Photo">
+                    </div>
+                    <div class="upload-hint" onclick="document.getElementById('profileImageInput').click()">
+                        <i class="bi bi-camera-fill me-1"></i> Upload Photo
+                    </div>
+                    <input type="file" id="profileImageInput" accept="image/jpeg, image/png, image/jpg, image/webp" style="display: none;">
+                    <h4 class="fw-bold mt-2" style="color: var(--text-primary);">Gedefaye Anteneh</h4>
+                    <p class="mb-1 text-muted-custom">Full‑Stack Developer | Fintech & SaaS Expert</p>
+                    <div class="mt-3">
+                        <span class="skill-badge">Spring Boot</span>
+                        <span class="skill-badge">React/Next</span>
+                        <span class="skill-badge">Flutter</span>
+                        <span class="skill-badge">Node.js</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills cloud modern -->
+        <div class="mb-5">
+            <div class="section-chip">⚡ core competencies</div>
+            <h2>Tech Arsenal & Smart Stack</h2>
+            <div class="row g-4 mt-3">
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100">
+                        <i class="bi bi-hdd-stack fs-2" style="color: var(--accent-primary);"></i>
+                        <h5 class="mt-2 fw-semibold" style="color: var(--text-primary);">Backend & Microservices</h5>
+                        <div><span class="skill-badge">Java/Spring Boot</span><span class="skill-badge">Python/Django</span><span class="skill-badge">Node.js/Express</span><span class="skill-badge">Laravel</span><span class="skill-badge">ASP.NET</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100">
+                        <i class="bi bi-phone fs-2" style="color: var(--accent-secondary);"></i>
+                        <h5 class="mt-2 fw-semibold" style="color: var(--text-primary);">Frontend & Mobile</h5>
+                        <div><span class="skill-badge">React/Next.js</span><span class="skill-badge">Vue/Angular</span><span class="skill-badge">Flutter/Dart</span><span class="skill-badge">Tailwind/Bootstrap</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100">
+                        <i class="bi bi-database-gear fs-2" style="color: var(--accent-primary);"></i>
+                        <h5 class="mt-2 fw-semibold" style="color: var(--text-primary);">DevOps & Databases</h5>
+                        <div><span class="skill-badge">Docker/Git</span><span class="skill-badge">PostgreSQL/MongoDB</span><span class="skill-badge">Oracle</span><span class="skill-badge">Vercel/Render</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects with ALL six new systems added + filters -->
+        <div class="mb-5">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div><div class="section-chip">🚀 live smart systems</div><h2>Digital Solutions Portfolio</h2></div>
+                <div class="mb-2">
+                    <button class="btn btn-outline-smart btn-sm me-2 filter-btn" data-filter="all">All</button>
+                    <button class="btn btn-outline-smart btn-sm me-2 filter-btn" data-filter="ecommerce">🛍️ E‑Commerce</button>
+                    <button class="btn btn-outline-smart btn-sm me-2 filter-btn" data-filter="institution">🏛️ Institution</button>
+                    <button class="btn btn-outline-smart btn-sm me-2 filter-btn" data-filter="license">📜 License</button>
+                    <button class="btn btn-outline-smart btn-sm me-2 filter-btn" data-filter="service">🛠️ ServiceDesk</button>
+                    <button class="btn btn-outline-smart btn-sm me-2 filter-btn" data-filter="property">🏠 Property</button>
+                    <button class="btn btn-outline-smart btn-sm filter-btn" data-filter="faith">📖 Faith</button>
+                </div>
+            </div>
+            <div class="row g-4 mt-2" id="projectsContainer">
+                <!-- 1. Smart E‑commerce System -->
+                <div class="col-md-6 col-lg-4 project-item" data-cat="ecommerce">
+                    <div class="project-card p-4">
+                        <i class="bi bi-cart4 fs-2" style="color: var(--accent-secondary);"></i>
+                        <h5 class="mt-2 fw-bold" style="color: var(--text-primary);">SmartShop – E‑commerce Ecosystem</h5>
+                        <p class="small text-muted-custom">Full-featured e‑commerce platform with cart, product catalog & authentication.</p>
+                        <div class="d-flex gap-2 mt-2"><span class="skill-badge">React</span><span class="skill-badge">Node.js</span></div>
+                        <a href="https://smartecommerce-five.vercel.app" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Visit SmartShop →</a>
+                    </div>
+                </div>
+                <!-- 2. Smart Website System (DKU Gibi Gubae) -->
+                <div class="col-md-6 col-lg-4 project-item" data-cat="institution">
+                    <div class="project-card p-4">
+                        <i class="bi bi-building fs-2" style="color: var(--accent-primary);"></i>
+                        <h5 class="mt-2" style="color: var(--text-primary);">DKU Gibi Gubae – Campus Portal</h5>
+                        <p class="small text-muted-custom">Institutional portal for divisions, member reports & campus hub.</p>
+                        <div class="d-flex gap-2 mt-2"><span class="skill-badge">Next.js</span><span class="skill-badge">Tailwind</span></div>
+                        <a href="https://dkugibigubae.vercel.app" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Explore Portal →</a>
+                    </div>
+                </div>
+                <!-- 3. Smart License Management System -->
+                <div class="col-md-6 col-lg-4 project-item" data-cat="license">
+                    <div class="project-card p-4">
+                        <i class="bi bi-file-earmark-lock2 fs-2" style="color: var(--accent-secondary);"></i>
+                        <h5 class="mt-2" style="color: var(--text-primary);">DrivingLMS – License Mgmt</h5>
+                        <p class="small text-muted-custom">Complete driving license administration: issuance, renewals, user auth.</p>
+                        <div class="d-flex gap-2 mt-2"><span class="skill-badge">MERN</span><span class="skill-badge">JWT</span></div>
+                        <a href="https://licensemanagement.vercel.app/login" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Access System →</a>
+                    </div>
+                </div>
+                <!-- 4. Smart Self Service Desk System -->
+                <div class="col-md-6 col-lg-4 project-item" data-cat="service">
+                    <div class="project-card p-4">
+                        <i class="bi bi-headset fs-2" style="color: var(--accent-primary);"></i>
+                        <h5 class="mt-2" style="color: var(--text-primary);">ServiceDesk Pro – IT Portal</h5>
+                        <p class="small text-muted-custom">Self-service ticket portal, sign in, ticket tracking & resolutions.</p>
+                        <div class="d-flex gap-2 mt-2"><span class="skill-badge">React</span><span class="skill-badge">Express</span></div>
+                        <a href="https://service-desk-zeta.vercel.app" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Launch ServiceDesk →</a>
+                    </div>
+                </div>
+                <!-- 5. Smart Building / Rent Management System -->
+                <div class="col-md-6 col-lg-4 project-item" data-cat="property">
+                    <div class="project-card p-4">
+                        <i class="bi bi-building-fill-up fs-2" style="color: var(--accent-secondary);"></i>
+                        <h5 class="mt-2" style="color: var(--text-primary);">RentMS – Property Management</h5>
+                        <p class="small text-muted-custom">Rent tracking, tenant login, lease management dashboard.</p>
+                        <div class="d-flex gap-2 mt-2"><span class="skill-badge">Vue</span><span class="skill-badge">Laravel</span></div>
+                        <a href="https://rent-management-nine.vercel.app/login" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Manage Rentals →</a>
+                    </div>
+                </div>
+                <!-- 6. Smart Holy Books Platform -->
+                <div class="col-md-6 col-lg-4 project-item" data-cat="faith">
+                    <div class="project-card p-4">
+                        <i class="bi bi-book-half fs-2" style="color: var(--accent-primary);"></i>
+                        <h5 class="mt-2" style="color: var(--text-primary);">Holy Books Platform</h5>
+                        <p class="small text-muted-custom">Faith-based digital library for scriptures & study tools.</p>
+                        <div class="d-flex gap-2 mt-2"><span class="skill-badge">Django</span><span class="skill-badge">Render</span></div>
+                        <a href="https://holy-books-platform.onrender.com" target="_blank" class="btn btn-outline-smart btn-sm w-100 mt-3">Preview →</a>
+                    </div>
+                </div>
+                <!-- Additional projects -->
+                <div class="col-md-6 col-lg-4 project-item" data-cat="ecommerce institution">
+                    <div class="project-card p-4"><i class="bi bi-calculator-fill fs-2" style="color: var(--accent-secondary);"></i><h5 style="color: var(--text-primary);">Ahadu Payroll + Biometric</h5><p class="small text-muted-custom">Payroll with attendance integration.</p><a href="https://ahadu-payroll-mgnt-system-frontend.onrender.com/" target="_blank" class="btn btn-smart btn-sm w-100 mt-2">View Demo</a></div>
+                </div>
+                <div class="col-md-6 col-lg-4 project-item" data-cat="institution">
+                    <div class="project-card p-4"><i class="bi bi-person-badge fs-2" style="color: var(--accent-primary);"></i><h5 style="color: var(--text-primary);">Fayda ID Auth Portal</h5><p class="small text-muted-custom">National Digital ID + real-time KYC.</p><a href="https://fayda-integration.onrender.com" target="_blank" class="btn btn-smart btn-sm w-100 mt-2">View Portal</a></div>
+                </div>
+                <div class="col-md-6 col-lg-4 project-item" data-cat="ecommerce">
+                    <div class="project-card p-4"><i class="bi bi-people fs-2" style="color: var(--accent-secondary);"></i><h5 style="color: var(--text-primary);">Digital Equb</h5><p class="small text-muted-custom">Group savings & automated payouts.</p><a href="https://ahadu-equib.vercel.app" target="_blank" class="btn btn-smart btn-sm w-100 mt-2">Launch Equb</a></div>
+                </div>
+                <div class="col-md-6 col-lg-4 project-item" data-cat="institution">
+                    <div class="project-card p-4"><i class="bi bi-file-check fs-2" style="color: var(--accent-primary);"></i><h5 style="color: var(--text-primary);">Clearance Mgmt</h5><p class="small text-muted-custom">University automation workflow.</p><a href="https://online-clearance-mgnt-system.onrender.com" target="_blank" class="btn btn-smart btn-sm w-100 mt-2">Try Clearance</a></div>
+                </div>
+                <div class="col-md-6 col-lg-4 project-item" data-cat="service">
+                    <div class="project-card p-4"><i class="bi bi-chat-dots fs-2" style="color: var(--accent-secondary);"></i><h5 style="color: var(--text-primary);">Real-time Chat App</h5><p class="small text-muted-custom">Socket.io instant messaging.</p><a href="https://my-chat-app-09fl.onrender.com/" target="_blank" class="btn btn-smart btn-sm w-100 mt-2">Open Chat</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact & Social Grid -->
+        <div class="mb-5">
+            <div class="section-chip">📞 connect</div>
+            <h2>Let's Collaborate</h2>
+            <div class="glass-card p-4 mt-3">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <p><i class="bi bi-telephone-fill me-2" style="color: var(--accent-primary);"></i> <strong>Call/WhatsApp:</strong> <a href="tel:+251920646207">+251 920 646 207</a> / <a href="tel:+251943558347">+251 943 558 347</a></p>
+                        <p><i class="bi bi-envelope-fill me-2" style="color: var(--accent-primary);"></i> <strong>Email:</strong> <a href="mailto:gedefayeanteneh07@gmail.com">gedefayeanteneh07@gmail.com</a></p>
+                        <p><i class="bi bi-github me-2" style="color: var(--accent-primary);"></i> <strong>GitHub:</strong> <a href="https://github.com/GedefayeA" target="_blank">/GedefayeA</a></p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex gap-3 justify-content-md-end">
+                            <a href="https://t.me/@TigistuAnteneh" class="contact-icon d-inline-flex align-items-center justify-content-center"><i class="bi bi-telegram"></i></a>
+                            <a href="https://linkedin.com/in/gedefayeanteneh" class="contact-icon d-inline-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://x.com/@GedefayeAnteneh" class="contact-icon d-inline-flex align-items-center justify-content-center"><i class="bi bi-twitter-x"></i></a>
+                            <a href="https://instagram.com/tigistuanteneh" class="contact-icon d-inline-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-4">
+        <div class="container small">© 2026 Gedefaye Anteneh Portfolio | E‑Commerce · License · ServiceDesk · Property · Faith · Fintech | 12+ production solutions</div>
+    </footer>
+
+    <button id="scrollTopBtn"><i class="bi bi-arrow-up-short"></i></button>
+
+    <script>
+        // Profile photo upload functionality
+        const profileAvatar = document.getElementById('profileAvatar');
+        const avatarText = document.getElementById('avatarText');
+        const avatarImage = document.getElementById('avatarImage');
+        const navAvatar = document.getElementById('navAvatar');
+        const fileInput = document.getElementById('profileImageInput');
+        
+        function loadSavedProfilePhoto() {
+            const savedPhoto = localStorage.getItem('profilePhoto');
+            if (savedPhoto) {
+                avatarText.style.display = 'none';
+                avatarImage.style.display = 'block';
+                avatarImage.src = savedPhoto;
+                if (navAvatar) {
+                    navAvatar.innerHTML = '';
+                    const navImg = document.createElement('img');
+                    navImg.src = savedPhoto;
+                    navImg.style.width = '100%';
+                    navImg.style.height = '100%';
+                    navImg.style.borderRadius = '50%';
+                    navImg.style.objectFit = 'cover';
+                    navAvatar.appendChild(navImg);
+                    navAvatar.style.background = 'transparent';
+                }
+            }
+        }
+        
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file && (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpg' || file.type === 'image/webp')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageData = e.target.result;
+                    avatarText.style.display = 'none';
+                    avatarImage.style.display = 'block';
+                    avatarImage.src = imageData;
+                    if (navAvatar) {
+                        navAvatar.innerHTML = '';
+                        const navImg = document.createElement('img');
+                        navImg.src = imageData;
+                        navImg.style.width = '100%';
+                        navImg.style.height = '100%';
+                        navImg.style.borderRadius = '50%';
+                        navImg.style.objectFit = 'cover';
+                        navAvatar.appendChild(navImg);
+                        navAvatar.style.background = 'transparent';
+                    }
+                    localStorage.setItem('profilePhoto', imageData);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert('Please select a valid image file (JPEG, PNG, WEBP)');
+            }
+        });
+        
+        loadSavedProfilePhoto();
+        
+        // Theme toggle with improved handling
+        const setTheme = (theme) => {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('smart_portfolio_theme', theme);
+            const btn = document.getElementById('themeToggleBtn');
+            if(btn) btn.innerHTML = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        };
+        
+        const savedTheme = localStorage.getItem('smart_portfolio_theme') || 'dark';
+        setTheme(savedTheme);
+        
+        document.getElementById('themeToggleBtn')?.addEventListener('click', () => {
+            const cur = document.documentElement.getAttribute('data-theme');
+            setTheme(cur === 'dark' ? 'light' : 'dark');
+        });
+        
+        // Filter projects
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projects = document.querySelectorAll('.project-item');
+        const filterProjects = (category) => {
+            projects.forEach(proj => {
+                const cats = proj.getAttribute('data-cat');
+                if (category === 'all' || cats.includes(category)) {
+                    proj.style.display = 'block';
+                } else {
+                    proj.style.display = 'none';
+                }
+            });
+            filterButtons.forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.classList.add('filter-btn-active');
+                } else {
+                    btn.classList.remove('filter-btn-active');
+                }
+            });
+        };
+        
+        filterButtons.forEach(btn => btn.addEventListener('click', (e) => filterProjects(btn.getAttribute('data-filter'))));
+        filterProjects('all');
+        
+        // Scroll to top
+        const scrollBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) scrollBtn.classList.add('show');
+            else scrollBtn.classList.remove('show');
+        });
+        scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+</body>
+</html>
