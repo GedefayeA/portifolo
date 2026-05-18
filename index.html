@@ -240,6 +240,16 @@
             color: var(--text-secondary);
         }
 
+        /* Mobile Responsive Ordering */
+        @media (max-width: 991px) {
+            .hero-section {
+                order: 2 !important;
+            }
+            .profile-section {
+                order: 1 !important;
+            }
+        }
+
         @media (max-width: 768px) {
             .glass-card { padding: 1.2rem; }
             h2 { font-size: 1.6rem; }
@@ -269,8 +279,9 @@
     <div style="height: 90px;"></div>
 
     <main class="container my-4">
+        <!-- Hero Section with responsive ordering -->
         <div class="row g-5 align-items-center mb-5">
-            <div class="col-lg-7">
+            <div class="col-lg-7 hero-section">
                 <div class="glass-card p-4 p-md-5">
                     <div class="section-chip"><i class="bi bi-cpu me-1"></i> AI-Ready | Full‑Stack Innovator</div>
                     <h1 class="display-5 fw-bold mb-3">Intelligent Systems <br><span style="color: var(--accent-primary);">for Digital Era</span></h1>
@@ -282,7 +293,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-5 profile-section">
                 <div class="glass-card p-4 text-center">
                     <div class="profile-avatar">
                         <img src="./profile.jpg" alt="Gedefaye Anteneh" onerror="this.onerror=null; this.parentElement.innerHTML='GA'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.style.background='linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))'; this.parentElement.style.fontSize='3rem'; this.parentElement.style.fontWeight='bold'; this.parentElement.style.color='#0f172a';">
@@ -341,7 +352,6 @@
                 </div>
             </div>
             <div class="row g-4 mt-2" id="projectsContainer">
-                <!-- All your project cards remain the same -->
                 <div class="col-md-6 col-lg-4 project-item" data-cat="ecommerce">
                     <div class="project-card p-4">
                         <i class="bi bi-cart4 fs-2" style="color: var(--accent-secondary);"></i>
