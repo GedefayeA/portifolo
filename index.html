@@ -54,7 +54,6 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* Enhanced glass morphism */
         .glass-card {
             background: var(--card-bg);
             backdrop-filter: blur(14px);
@@ -62,10 +61,6 @@
             border: 1px solid var(--glass-border);
             transition: all 0.3s ease;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        [data-theme="light"] .glass-card {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .glass-nav {
@@ -87,10 +82,6 @@
             transform: translateY(-8px);
             border-color: var(--accent-primary);
             box-shadow: 0 20px 30px -15px rgba(45, 212, 191, 0.3);
-        }
-
-        [data-theme="light"] .project-card:hover {
-            box-shadow: 0 20px 30px -15px rgba(13, 148, 136, 0.2);
         }
 
         .btn-smart {
@@ -285,7 +276,6 @@
             display: none;
         }
 
-        /* Improved contrast for light mode */
         [data-theme="light"] .glass-card,
         [data-theme="light"] .project-card {
             backdrop-filter: blur(10px);
@@ -320,7 +310,6 @@
 </head>
 <body>
 
-    <!-- Glass navigation bar -->
     <nav class="glass-nav fixed-top py-3">
         <div class="container d-flex justify-content-between align-items-center flex-wrap">
             <div class="d-flex align-items-center gap-3">
@@ -339,7 +328,6 @@
     <div style="height: 90px;"></div>
 
     <main class="container my-4">
-        <!-- Hero Section with modern about + profile upload -->
         <div class="row g-5 align-items-center mb-5">
             <div class="col-lg-7">
                 <div class="glass-card p-4 p-md-5">
@@ -355,7 +343,6 @@
             </div>
             <div class="col-lg-5">
                 <div class="glass-card p-4 text-center">
-                    <!-- Profile photo upload section -->
                     <div class="profile-avatar mx-auto mb-2" id="profileAvatar">
                         <span id="avatarText">👨‍💻</span>
                         <img id="avatarImage" style="display: none; width: 100%; height: 100%; border-radius: 50%; object-fit: cover;" alt="Profile Photo">
@@ -376,7 +363,6 @@
             </div>
         </div>
 
-        <!-- Skills cloud modern -->
         <div class="mb-5">
             <div class="section-chip">⚡ core competencies</div>
             <h2>Tech Arsenal & Smart Stack</h2>
@@ -405,7 +391,6 @@
             </div>
         </div>
 
-        <!-- Projects with ALL six new systems added + filters -->
         <div class="mb-5">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div><div class="section-chip">🚀 live smart systems</div><h2>Digital Solutions Portfolio</h2></div>
@@ -420,7 +405,6 @@
                 </div>
             </div>
             <div class="row g-4 mt-2" id="projectsContainer">
-                <!-- 1. Smart E‑commerce System -->
                 <div class="col-md-6 col-lg-4 project-item" data-cat="ecommerce">
                     <div class="project-card p-4">
                         <i class="bi bi-cart4 fs-2" style="color: var(--accent-secondary);"></i>
@@ -430,7 +414,6 @@
                         <a href="https://smartecommerce-five.vercel.app" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Visit SmartShop →</a>
                     </div>
                 </div>
-                <!-- 2. Smart Website System (DKU Gibi Gubae) -->
                 <div class="col-md-6 col-lg-4 project-item" data-cat="institution">
                     <div class="project-card p-4">
                         <i class="bi bi-building fs-2" style="color: var(--accent-primary);"></i>
@@ -440,7 +423,6 @@
                         <a href="https://dkugibigubae.vercel.app" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Explore Portal →</a>
                     </div>
                 </div>
-                <!-- 3. Smart License Management System -->
                 <div class="col-md-6 col-lg-4 project-item" data-cat="license">
                     <div class="project-card p-4">
                         <i class="bi bi-file-earmark-lock2 fs-2" style="color: var(--accent-secondary);"></i>
@@ -450,7 +432,6 @@
                         <a href="https://licensemanagement.vercel.app/login" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Access System →</a>
                     </div>
                 </div>
-                <!-- 4. Smart Self Service Desk System -->
                 <div class="col-md-6 col-lg-4 project-item" data-cat="service">
                     <div class="project-card p-4">
                         <i class="bi bi-headset fs-2" style="color: var(--accent-primary);"></i>
@@ -460,7 +441,6 @@
                         <a href="https://service-desk-zeta.vercel.app" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Launch ServiceDesk →</a>
                     </div>
                 </div>
-                <!-- 5. Smart Building / Rent Management System -->
                 <div class="col-md-6 col-lg-4 project-item" data-cat="property">
                     <div class="project-card p-4">
                         <i class="bi bi-building-fill-up fs-2" style="color: var(--accent-secondary);"></i>
@@ -470,7 +450,6 @@
                         <a href="https://rent-management-nine.vercel.app/login" target="_blank" class="btn btn-smart btn-sm w-100 mt-3">Manage Rentals →</a>
                     </div>
                 </div>
-                <!-- 6. Smart Holy Books Platform -->
                 <div class="col-md-6 col-lg-4 project-item" data-cat="faith">
                     <div class="project-card p-4">
                         <i class="bi bi-book-half fs-2" style="color: var(--accent-primary);"></i>
@@ -480,7 +459,6 @@
                         <a href="https://holy-books-platform.onrender.com" target="_blank" class="btn btn-outline-smart btn-sm w-100 mt-3">Preview →</a>
                     </div>
                 </div>
-                <!-- Additional projects -->
                 <div class="col-md-6 col-lg-4 project-item" data-cat="ecommerce institution">
                     <div class="project-card p-4"><i class="bi bi-calculator-fill fs-2" style="color: var(--accent-secondary);"></i><h5 style="color: var(--text-primary);">Ahadu Payroll + Biometric</h5><p class="small text-muted-custom">Payroll with attendance integration.</p><a href="https://ahadu-payroll-mgnt-system-frontend.onrender.com/" target="_blank" class="btn btn-smart btn-sm w-100 mt-2">View Demo</a></div>
                 </div>
@@ -499,7 +477,6 @@
             </div>
         </div>
 
-        <!-- Contact & Social Grid -->
         <div class="mb-5">
             <div class="section-chip">📞 connect</div>
             <h2>Let's Collaborate</h2>
@@ -530,7 +507,6 @@
     <button id="scrollTopBtn"><i class="bi bi-arrow-up-short"></i></button>
 
     <script>
-        // Profile photo upload functionality
         const profileAvatar = document.getElementById('profileAvatar');
         const avatarText = document.getElementById('avatarText');
         const avatarImage = document.getElementById('avatarImage');
@@ -587,7 +563,6 @@
         
         loadSavedProfilePhoto();
         
-        // Theme toggle with improved handling
         const setTheme = (theme) => {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('smart_portfolio_theme', theme);
@@ -603,7 +578,6 @@
             setTheme(cur === 'dark' ? 'light' : 'dark');
         });
         
-        // Filter projects
         const filterButtons = document.querySelectorAll('.filter-btn');
         const projects = document.querySelectorAll('.project-item');
         const filterProjects = (category) => {
@@ -627,7 +601,6 @@
         filterButtons.forEach(btn => btn.addEventListener('click', (e) => filterProjects(btn.getAttribute('data-filter'))));
         filterProjects('all');
         
-        // Scroll to top
         const scrollBtn = document.getElementById('scrollTopBtn');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 400) scrollBtn.classList.add('show');
